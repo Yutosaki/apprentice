@@ -23,6 +23,7 @@ while true; do
         # パスワード情報をファイルに追記
         echo "$service_name:$user_name:$password" >> $password_file
         echo "パスワードの追加は成功しました."
+        
     elif [ "$choice" == "Get Password" ]; then
         # サービス名の入力
         echo "サービス名を入力してください:"
@@ -37,6 +38,7 @@ while true; do
         else
             echo "そのサービスは登録されていません."
         fi
+
     elif [ "$choice" == "Exit" ]; then
         # プログラムを終了
         echo "Thank you!"
