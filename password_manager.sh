@@ -48,7 +48,4 @@ while ture; do
     else
         echo "入力が間違えています。Add Password/Get Password/Exit から入力してください."
     fi
-
-
-echo "Thank you!"
-echo "$service_name:$username:$password" >> "$password_file"
+done
