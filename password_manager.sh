@@ -1,18 +1,18 @@
-#! /bin/bash
+#!/bin/bash
 
-#パスワード情報を保存
+# パスワード情報を保存
 password_file="passwords.txt"
 
-#ようこそメッセージ
+# ようこそメッセージ
 echo "パスワードマネージャーへようこそ!"
 
-while ture; do
-    #何をするかを選択
+while true; do
+    # 何をするかを選択
     echo "次の選択肢から入力してください(Add Password/Get Password/Exit):"
     read choice
 
     if [ "$choice" == "Add Password" ]; then
-    # サービス名、ユーザー名、パスワードの入力
+        # サービス名、ユーザー名、パスワードの入力
         echo "サービス名を入力してください:"
         read service_name
         echo "ユーザー名を入力してください:"
@@ -23,8 +23,6 @@ while ture; do
         # パスワード情報をファイルに追記
         echo "$service_name:$user_name:$password" >> $password_file
         echo "パスワードの追加は成功しました."
-    fi
-
     elif [ "$choice" == "Get Password" ]; then
         # サービス名の入力
         echo "サービス名を入力してください:"
@@ -39,8 +37,6 @@ while ture; do
         else
             echo "そのサービスは登録されていません."
         fi
-    fi
-
     elif [ "$choice" == "Exit" ]; then
         # プログラムを終了
         echo "Thank you!"
