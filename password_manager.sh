@@ -25,5 +25,30 @@ while ture; do
         echo "パスワードの追加は成功しました."
     fi
 
+    elif [ "$choice" == "Get Password" ]; then
+        # サービス名の入力
+        echo "サービス名を入力してください:"
+        read service_name
+
+        # ファイルから該当サービス名の情報を取得
+        password_info=$(grep "^$service_name:" $password_file)
+
+        if [ -n "$password_info" ]; then
+            # サービス名、ユーザー名、パスワードを表示
+            echo "$password_info"
+        else
+            echo "そのサービスは登録されていません."
+        fi
+    fi
+
+    elif [ "$choice" == "Exit" ]; then
+        # プログラムを終了
+        echo "Thank you!"
+        break
+    else
+        echo "入力が間違えています。Add Password/Get Password/Exit から入力してください."
+    fi
+
+
 echo "Thank you!"
 echo "$service_name:$username:$password" >> "$password_file"
