@@ -8,17 +8,14 @@ echo "パスワードマネージャーへようこそ!"
 
 while true; do
     # 何をするかを選択
-    echo "次の選択肢から入力してください(Add Password/Get Password/Exit):"
-    read choice
+    read -p "次の選択肢から入力してください(Add Password/Get Password/Exit) :" choice
+    echo
 
     if [ "$choice" == "Add Password" ]; then
         # サービス名、ユーザー名、パスワードの入力
-        echo "サービス名を入力してください:"
-        read service_name
-        echo "ユーザー名を入力してください:"
-        read user_name
-        echo "パスワードを入力してください:"
-        read password
+        read -p "サービス名を入力してください :" service_name
+        read -p "ユーザー名を入力してください :" user_name
+        read -p "パスワードを入力してください :" password
 
         # パスワード情報をファイルに追記
         echo "$service_name:$user_name:$password" >> $password_file
@@ -26,15 +23,17 @@ while true; do
         
     elif [ "$choice" == "Get Password" ]; then
         # サービス名の入力
-        echo "サービス名を入力してください:"
-        read service_name
+        read -p "サービス名を入力してください :" service_name
 
         # ファイルから該当サービス名の情報を取得
         password_info=$(grep "^$service_name:" $password_file)
 
         if [ -n "$password_info" ]; then
             # サービス名、ユーザー名、パスワードを表示
-            echo "$password_info"
+            echo "サービス名 ：$service_name"
+            echo "ユーザー名 ：$user_name"
+            echo "パスワード ：$password"
+            echo
         else
             echo "そのサービスは登録されていません."
         fi
